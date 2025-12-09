@@ -1,16 +1,21 @@
 package entities;
 
-import java.util.Hash
-import Task;
-import Team;
+import java.util.HashSet;
 import lombok.Builder;
+import lombok.Data;
 
+import java.util.Date;
+import java.time.Instant;
+
+@Data
+@Builder
 public class Project {
 
-    private final int id;
+    @Builder.Default
+    private final int id = 0;
 
     public int getId() {
-        return id ? id : 0;
+        return id != 0 ? id : 0;
     }
 
     @Builder.Default
@@ -34,7 +39,7 @@ public class Project {
     public void setDescription(String description) { this.description = description; }
 
     @Builder.Default
-    private Date createdAt = Instant.now();
+    private Date createdAt = Date.from(Instant.now());
 
     public Date getCreatedAt() {
         return createdAt;
@@ -43,13 +48,13 @@ public class Project {
     private Team team;
 
     @Builder.Default
-    private Hash<final int, Task> taskList = new ArrayList<>();
+    private HashSet<Task> taskList = new HashSet<Task>();
 
-    public void setTaskList(Hash<int, Task> taskList) {
+    public void setTaskList(HashSet<Task> taskList) {
         this.taskList = taskList;
     }
 
-    public Hash<int, Task> getTaskList() {
+    public HashSet<Task> getTaskList() {
         return taskList;
     }
 }

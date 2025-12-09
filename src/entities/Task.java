@@ -2,9 +2,11 @@ package entities;
 
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.time.Instant
+import java.time.Instant;
 
 @Data
 @Builder
@@ -38,7 +40,7 @@ public class Task {
     }
 
     @Builder.Default
-    private TaskStatus status = TaskStatus.Created;
+    private TaskStatus status = TaskStatus.TODO;
 
     public TaskStatus getStatus() {
         return status;
@@ -120,12 +122,4 @@ public class Task {
     public void addComment(String comment) {
         comments.add(comment);
     }
-}
-
-import lombok.Data;
-
-@Data
-public class TestLombok {
-    private String name;
-    private int age;
 }
